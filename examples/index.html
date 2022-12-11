@@ -1,0 +1,77 @@
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="container" id="app">
+      <!-- where the application will be rendered -->
+    </div>
+
+    <template data-component="App">
+      <article>
+        <div class="grid">
+          <hgroup>
+            <h2 data-bind="header.title"></h2>
+            <h3 data-bind="header.description"></h3>
+          </hgroup>
+          <input
+            type="text"
+            data-bind="header.title->value"
+            data-on="input->updateTitle"
+          />
+        </div>
+
+        <table role="grid">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Title</th>
+              <td>Tags</td>
+              <th>Completed At</th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody data-loop="todos">
+            <tr>
+              <td data-bind="todos.{index}.title"></td>
+              <td>
+                <input
+                  type="checkbox"
+                  data-on="click->toggle"
+                  data-args="todos.{index},todos"
+                  data-bind="todos.{index}.done->checked"
+                />
+              </td>
+
+              <td data-loop="todos.{index}.tags">
+                <kbd data-bind="todos.{index}.tags.{index}"></kbd>
+              </td>
+              <td data-bind="todos.{index}.createdAt"></td>
+              <td>
+                <button
+                  class="outline"
+                  data-args="todos.{index}.id"
+                  data-on="click->destroy"
+                >
+                  x
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <footer>
+          <input data-ref="newInput" type="text" placeholder="New Todo Name" />
+          <button data-on="click->addTodo">Add Todo</button>
+        </footer>
+      </article>
+    </template>
+
+    <script type="module" src="./todos.js"></script>
+  </body>
+</html>

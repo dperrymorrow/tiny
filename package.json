@@ -1,0 +1,22 @@
+{
+  "name": "tiny",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "http-server . -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dperrymorrow/tiny.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dperrymorrow/tiny/issues"
+  },
+  "homepage": "https://github.com/dperrymorrow/tiny#readme",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
